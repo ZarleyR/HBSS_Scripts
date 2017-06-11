@@ -1,0 +1,53 @@
+####################################################################################
+#                                                                                  #
+#                                Purpose/Scope                                     #
+#     The purpose of this application is to hash known binaries used by Motorola   #
+#   Solutions, Inc. and third party applications.  The user selects predefined     #
+#   inventories lists that are stored within the ..\Data\ directory.  Each entry   #
+#   within the 'astroInventory.txt' will be used to populate the combobox.  The    #
+#   'astroInventory.txt' is stored within the ..\Scripts\ directory.               #
+#                                                                                  #
+####################################################################################
+
+Application Tree Structure
+
+..\Data\      =   Used to store all data utilized by the application
+..\Scripts\   =   Used to store all scripts utilized by the application
+
+Application File Structure
+
+..\Data\{client name}_values.txt  =   Stores the directories that need to be hashed based on the client selection
+..\Data\astroInventory.txt        =   Stores all Astro Client names used to populate combobox selection
+..\Scripts\astroInventory.ps1     =   The main application
+
+AstroInventory.txt File Struction:
+
+This file is a simple text file that stores the names of all the Astro Client names.
+The application is looking for this file.  In the event this file is not found, the
+user will need to utilize the 'Custom...' combobox selection.  This will allow the user
+to use the application even without a predefined inventory list.  Within the example 
+below, the '#' is used to add comments within the .txt files imported into the application.
+These lines will be omitted when the application pulls from the .txt file.
+
+::::Figure 1::::
+[example of the structure]
+#Version 1
+Astro DC
+AuC Server
+::::::::::::::::
+
+Astro DC_values.txt
+
+The file names for each client are important.  The [client name] must match within the
+AstroInventory.txt and [client name]_values.txt.  The application populates the combobox
+selections from the AstroInventory.txt as shown in Figure 1.  The application uses that 
+[client name] to then look at the \Data\ path to pull in the directories that need to be
+hashed.  The directories are also housed within a .txt file.
+
+::::Figure 2::::
+[example of the structure]
+#Version 1
+C:\Program Files (x86)\Motorola\Operational Agent
+C:\Program Files\Motorola\AstroDC\AD
+C:\Program Files\Motorola\AstroDC\ADAM
+::::::::::::::::
